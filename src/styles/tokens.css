@@ -1,0 +1,111 @@
+:root {
+  color-scheme: light;
+
+  --app-bg: #fefefe;
+  --sidebar-bg: #f9f9f9;
+  --surface: #ffffff;
+  --table-gap: #ffffff;
+  --line: #ececec;
+  --line-strong: #e4e4e4;
+  --fg: #1a1a1a;
+  --fg-2: #666666;
+  --fg-3: #8f8f8f;
+  --fg-4: #a3a3a3;
+  --icon-muted: #b0b0b0;
+  --cell: #fbfbfb;
+  --cell-head: #f7f7f7;
+  --cell-hover: #f6f6f6;
+  --cell-active: #f1f1f1;
+  --hover-soft: rgb(0 0 0 / 0.035);
+  --hover-strong: #fafafa;
+  --tag-bg: #f3f3f3;
+  --tag-bg-active: #ffffff;
+  --brand: #2f7df6;
+  --brand-soft: #eef4ff;
+  --ring-line: rgb(0 0 0 / 0.08);
+
+  --tag-productivity: #6b73e8;
+  --tag-collaboration: #e0457f;
+  --tag-b2b: #4b88f0;
+  --tag-saas: #43b070;
+  --tag-software: #f0b13c;
+
+  --bar-h: 43px;
+  --toolbar-h: 45.5px;
+  --thead-h: 37px;
+  --row-h: 37.5px;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Neutral mirror of the light palette: same steps, same relationships, same hues. */
+.dark {
+  color-scheme: dark;
+
+  --app-bg: #101010;
+  --sidebar-bg: #141414;
+  --surface: #1a1a1a;
+  --table-gap: #0a0a0a;
+  --line: #232323;
+  --line-strong: #2d2d2d;
+  --fg: #ededed;
+  --fg-2: #a3a3a3;
+  --fg-3: #7a7a7a;
+  --fg-4: #626262;
+  --icon-muted: #555555;
+  --cell: #141414;
+  --cell-head: #1a1a1a;
+  --cell-hover: #181818;
+  --cell-active: #212121;
+  --hover-soft: rgb(255 255 255 / 0.05);
+  --hover-strong: #232323;
+  --tag-bg: #1f1f1f;
+  --tag-bg-active: #2b2b2b;
+  --brand: #4a90ff;
+  --brand-soft: rgb(74 144 255 / 0.14);
+  --ring-line: rgb(255 255 255 / 0.1);
+
+  --tag-productivity: #8a91f2;
+  --tag-collaboration: #f0649a;
+  --tag-b2b: #6b9ff5;
+  --tag-saas: #5bc788;
+  --tag-software: #f5c05c;
+}
+
+html, body { height: 100%; }
+
+body {
+  background: var(--app-bg);
+  color: var(--fg);
+  font-family: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 450;
+  line-height: 1.35;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-variant-numeric: tabular-nums;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.emoji {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  font-size: 12px;
+  line-height: 1;
+}
+
+/* theme switch: disable the default cross-fade, we animate clip-path ourselves */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 2; }
+
+/* a newly added row flashes a soft brand tint that fades to its normal background */
+@keyframes row-flash {
+  from { background-color: var(--brand-soft); }
+}
+.row-flash { animation: row-flash 1.4s var(--ease-out) 0.2s both; }
